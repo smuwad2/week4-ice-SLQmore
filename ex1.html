@@ -3,11 +3,11 @@
 <head>
 
 </head>
-<body>
+<body>q
     
     <h2>Form Validation</h2>
 
-    <form name="inputForm" action="#" onsubmit="return validateForm('inputForm')" autocomplete="on" >
+    <form name="inputform" action="#" onsubmit="return validateForm('inputform')" autocomplete="on" >
             ID: <input type="text" name="id" ><br>
             Age: <input type="number" name="age" ><br>
             Email: <input type="text" name="email" ><br>
@@ -16,17 +16,37 @@
         </form>
 
         <script>
-        
             function validateForm(formName) {
-                // Error messages:
-                // Invalid age: Age must be between 10 and 40.
-                // Invalid email: Email must contain the character @.
-                // Empty password: Password must be non-empty.
-                var errorMessages="";
-                
-                
-            }
-     
+                let form = document.forms[formName];
+                let errorMsg = "";
+
+                const idVal = form.id.value
+                const ageVal = form.age.value;
+                const emailVal = form.email.value;
+                const passwordVal = form.password.value;
+               
+                if (idVal.length > 10){
+                    errorMsg += "ID has a amax l ength of 10 characters.\n";
+                }
+
+                if (isNaN(ageVal) || ageVal < 10 || ageVal > 40){
+                    errorMsg += "Age must be between 10 and 40.\n";
+                }
+
+                if (!emailVal.includes("@")){
+                    errorMsg += "Email must contain the character @.\n";
+                }
+
+                if (passwordVal.trim().length == 0){
+                    errorMsg += "Password must be non-empty.\n";
+                }
+
+                if (errorMsg){
+                    alert(errorMsg);
+                    return false; //stops the form from submitting
+                }
+                return true;
+                }   
          </script>
 </body>
 </html>
