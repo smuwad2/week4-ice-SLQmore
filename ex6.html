@@ -19,11 +19,24 @@
     <script>
         
         // add code here
-        
-        
+        let item = document.getElementById("select_item");
+        item.addEventListener("change", additem);
+
+        function additem(){
+
+            const input = document.getElementById("select_item");
+            const val = input.value;
+
+            const ulElem = document.getElementById("shopList");
+            const liElem = document.createElement('li');
+
+            liElem.innerText = val;
+
+            if (val){
+                ulElem.appendChild(liElem);
+            }
+        }
+
     </script>
-
-    
-
     </body>
 </html>
